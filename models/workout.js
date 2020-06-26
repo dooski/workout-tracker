@@ -1,3 +1,4 @@
+// specifies that the model and Scheme will be using mongoose
 var { model, Schema } = require("mongoose")
 
 module.exports = model('workout', new Schema({
