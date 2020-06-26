@@ -12,8 +12,10 @@ app.use(express.static(path.join(__dirname, "public")))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-//routes
-app.use(require("./routes/routine.js"))
+//api routes
+app.use("/api", require("./routes/routine.js"))
+
+//html routes
 //home
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "./public/index.html"))

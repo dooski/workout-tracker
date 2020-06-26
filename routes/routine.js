@@ -2,6 +2,8 @@
 var router = require("express").Router()
 var Workout = require("../models/workout.js")
 
+
+
 //GET request for all workouts and catches promise rejections
 router.get("/workouts", (req, res) => {
     Workout.find()
@@ -14,7 +16,6 @@ router.get("/workouts/range", (req, res) => {
     Workout.find().limit(7)
         .then(workout => res.json(workout))
         .catch(e => console.error(e))
-    console.log(req.body)
 })
 
 // POST request for one workout and catches promise rejections
@@ -28,7 +29,7 @@ router.post("/workouts", (req, res) => {
 router.put("/workouts/:id", (req, res) => {
     console.log(req.params.id)
     Workout.findByIdAndUpdate(req.params.id, { $push: { exercises: req.body } }, { new: true, runValidators: true })
-        .then(() => res.sendStatus(200))
+        .then(workout => res.json(workout))
         .catch(e => console.error(e))
 })
 
