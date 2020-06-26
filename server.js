@@ -8,23 +8,23 @@ var path = require("path")
 const app = express()
 const PORT = process.env.PORT || 3000
 
-app.use(express.static(join(__dirname, "public")))
+app.use(express.static(path.join(__dirname, "public")))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 //routes
-app.use(require("./routes"))
+app.use(require("./routes/routine.js"))
 //home
 app.get("/", (req, res) => {
-    res.sendFile(join(__dirname, "./public/index.html"))
+    res.sendFile(path.join(__dirname, "./public/index.html"))
 })
 //exercise
 app.get("/exercise", (req, res) => {
-    res.sendFile(join(__dirname, "./public/exercise.html"))
+    res.sendFile(path.join(__dirname, "./public/exercise.html"))
 })
 //stats
 app.get("/stats", (req, res) => {
-    res.sendFile(join(__dirname, "./public/stats.html"))
+    res.sendFile(path.join(__dirname, "./public/stats.html"))
 })
 
 // sets up mongoose for either heroku use or localhost
@@ -34,3 +34,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
     useFindAndModify: false
 })
 
+// listens and tells me its listening, like a good app should
+app.listen(PORT, () => {
+    console.log(`site running on port ${PORT}`);
+});

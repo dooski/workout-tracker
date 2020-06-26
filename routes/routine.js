@@ -1,6 +1,6 @@
 //sets up the router to do that ol routing and links the workout model
 var router = require("express").Router()
-var { Workout } = require("../models")
+var Workout = require("../models/workout.js")
 
 //GET request for all workouts and catches promise rejections
 router.get("/workouts", (req, res) => {
