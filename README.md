@@ -10,7 +10,7 @@ Mongoose, MongoDB, Node.Js, and Express
 
 3. Screenshots
 
-![Image of Workout Dashboard](./img/dashboard.PNG)
+![Image of Workout Dashboard](img/dashboard.PNG)
 
 4. Credits
 
